@@ -1226,7 +1226,8 @@ class GHNotifierTest(unittest.TestCase):
         self.add_card_mock.assert_called_once_with(11, issue=123)
         notifier.logger.warning.assert_not_called()
 
-    def _build_check_mock(self, name):
+    @staticmethod
+    def _build_check_mock(name):
         check_mock = MagicMock()
         check_mock.test = build_compliance_check_obj(name, name, name, [name])
         return check_mock

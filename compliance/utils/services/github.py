@@ -330,7 +330,8 @@ class Github(object):
             raise NotImplementedError('orgs not supported yet')
         return self._make_request('post', url, json=data)
 
-    def rand_color(self):
+    @staticmethod
+    def rand_color():
         """Generate a random color for labels."""
         return (
             f'{random.randint(0, 255):02X}'
@@ -462,7 +463,8 @@ class Github(object):
             return r.json()
         return r
 
-    def _annotate_body(self, body, annotation):
+    @staticmethod
+    def _annotate_body(body, annotation):
         anno_str = json.dumps(annotation, indent=2)
         return f'```application/json+utilitarian\n{anno_str}\n```\n{body}'
 

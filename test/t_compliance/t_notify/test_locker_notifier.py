@@ -61,7 +61,8 @@ class LockerNotifierTest(unittest.TestCase):
         self.assertEqual(args[1], 'notifications')
         self.assertEqual(args[2], 'alerts_summary.md')
 
-    def _build_check_mock(self, name):
+    @staticmethod
+    def _build_check_mock(name):
         check_mock = MagicMock()
         check_mock.test = build_compliance_check_obj(name, name, name, [name])
         return check_mock

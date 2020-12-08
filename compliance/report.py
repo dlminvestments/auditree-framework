@@ -82,7 +82,8 @@ class ReportBuilder(object):
         env = jinja2.Environment(loader=loader, autoescape=True)
         evidence.set_content(env.get_template(tmpl_path.name).render(context))
 
-    def get_template_for(self, test_obj, evidence):
+    @staticmethod
+    def get_template_for(test_obj, evidence):
         """
         Provide the file path of the template associated to the given evidence.
 

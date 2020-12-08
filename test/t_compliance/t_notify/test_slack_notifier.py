@@ -87,7 +87,8 @@ class SlackNotifierTest(unittest.TestCase):
 
     @patch('requests.post')
     @patch('compliance.notify.get_config')
-    def test_do_not_notify_if_unknown_acc(self, get_config_mock, post_mock):
+    @staticmethod
+    def test_do_not_notify_if_unknown_acc(get_config_mock, post_mock):
         """Test that SlackNotifier does not notify if accred is unknown."""
         results = {
             'compliance.test.example': {
