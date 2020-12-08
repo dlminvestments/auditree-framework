@@ -52,7 +52,8 @@ class WorldClockCheck(ComplianceCheck):
         if day_of_week == 'Wednesday':
             self.add_failures('Wednesday Violation', f'It is Wednesday!!')
 
-    def get_reports(self):
+    @staticmethod
+    def get_reports():
         """
         Provide the check report name.
 
@@ -60,7 +61,8 @@ class WorldClockCheck(ComplianceCheck):
         """
         return ['time/world_clock.md']
 
-    def msg_day_of_year(self):
+    @staticmethod
+    def msg_day_of_year():
         """
         Day of year check notifier.
 
@@ -68,7 +70,8 @@ class WorldClockCheck(ComplianceCheck):
         """
         return {'subtitle': 'Even Day Violation', 'body': None}
 
-    def msg_day_of_week(self):
+    @staticmethod
+    def msg_day_of_week():
         """
         Day of week check notifier.
 

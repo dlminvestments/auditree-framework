@@ -749,7 +749,8 @@ class Locker(object):
             self.repo = git.Repo.init(self.local_path)
         self.init_config()
 
-    def _get_partitioned_evidence_metadata(self, metadata, evidence_name):
+    @staticmethod
+    def _get_partitioned_evidence_metadata(metadata, evidence_name):
         try:
             part, ev_name = evidence_name.split('_', 1)
             if part in metadata.get(ev_name, {}).get('partitions', {}).keys():
@@ -772,7 +773,8 @@ class Locker(object):
             logging.Formatter('%(levelname)s: %(message)s')
         )
 
-    def _evidence_abandoned(self, metadata=None, threshold=None):
+    @staticmethod
+    def _evidence_abandoned(metadata=None, threshold=None):
         if metadata is None or metadata.get('last_update') is None:
             return True
         last_update = dt.strptime(

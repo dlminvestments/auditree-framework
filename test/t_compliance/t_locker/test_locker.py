@@ -75,7 +75,8 @@ class LockerTest(unittest.TestCase):
             self.assertEqual(locker.name, 'test.git')
 
     @patch('git.Repo')
-    def test_clone(self, git_mock):
+    @staticmethod
+    def test_clone(git_mock):
         """Test that clone is called when URL is provided."""
         url = 'git@github.com:my-example-org/locker-demo.git'
         locker = Locker(repo_url=url)

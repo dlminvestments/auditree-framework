@@ -125,7 +125,8 @@ class _BaseNotifier(object):
                 retval[a] = messages
         return retval
 
-    def _split_by_status(self, messages):
+    @staticmethod
+    def _split_by_status(messages):
         passed_tests = []
         failed_tests = []
         warned_tests = []
@@ -142,12 +143,14 @@ class _BaseNotifier(object):
                 failed_tests.append((test_id, test_desc, msg))
         return passed_tests, failed_tests, warned_tests, errored_tests
 
-    def _get_check_names(self, checks, include_path=False):
+    @staticmethod
+    def _get_check_names(checks, include_path=False):
         if include_path:
             return [(msg['title'], path) for path, _, msg in checks]
         return [msg['title'] for _, _, msg in checks]
 
-    def _get_report_links(self, test_desc, link_format=None):
+    @staticmethod
+    def _get_report_links(test_desc, link_format=None):
         if not link_format:
             link_format = '<{url}|{name}>'
 
@@ -779,7 +782,8 @@ class SlackNotifier(_BaseNotifier):
             raise ValueError(f'Unknown Slack message mode: {mode}')
         return message
 
-    def _generate_push_error_attachment(self):
+    @staticmethod
+    def _generate_push_error_attachment():
         return [
             {
                 'title': 'ALL checks',

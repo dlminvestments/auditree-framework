@@ -154,7 +154,8 @@ class ComplianceConfig(object):
                 raise ValueError(f'Evidence {e.path} duplicated')
             self._evidence_cache[e.path] = e
 
-    def get_template_dir(self, test_obj=None):
+    @staticmethod
+    def get_template_dir(test_obj=None):
         """
         Provide the full path to the template directory for the test object.
 

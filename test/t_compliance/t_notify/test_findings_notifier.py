@@ -131,7 +131,8 @@ class FindingsNotifierTest(unittest.TestCase):
 
             self.assertEqual(result, -1)
 
-    def _build_check_mock(self, name):
+    @staticmethod
+    def _build_check_mock(name):
         check_mock = MagicMock()
         check_mock.test = build_compliance_check_obj(name, name, name, [name])
         return check_mock
