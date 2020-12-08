@@ -12,11 +12,13 @@
 # WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
 # See the License for the specific language governing permissions and
 # limitations under the License.
-"""Compliance automation command line interface."""
 
 from compliance import __version__
 from compliance.notify import get_notifiers
 from compliance.runners import CheckMode, FetchMode
+
+from ilcli import Command
+import sys
 
 from ilcli import Command
 
@@ -174,7 +176,7 @@ class ComplianceCLI(Command):
 
 def run():
     """Execute the Compliance CLI."""
-    exit(ComplianceCLI().run())
+    sys.exit(ComplianceCLI().run())
 
 
 if __name__ == '__main__':
