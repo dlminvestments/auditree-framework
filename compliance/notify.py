@@ -213,7 +213,7 @@ class _BaseNotifier(object):
             runbook=runbook_conditional
         )
 
-        body = msg['body'] and f'\n{msg["body"]}' or ''
+        body = f'\n{msg["body"]}' if msg['body'] else ''
 
         return summary_line, body
 
